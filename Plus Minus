@@ -1,0 +1,35 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'plusMinus' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def plusMinus(arr):
+    # Write your code here
+    length=len(arr)
+    pluscount=0
+    minuscount=0
+    zerocount=0
+    for i in range(length):
+        if(arr[i]>0):
+            pluscount+=1
+        elif(arr[i]<0):
+            minuscount+=1
+        elif(arr[i]==0):
+            zerocount+=1
+    print("{0:.4f}".format(pluscount/length))
+    print("%1.4f"%(minuscount/length))
+    print("%1.4f"%(zerocount/length))
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    arr = list(map(int, input().rstrip().split()))
+    plusMinus(arr)
