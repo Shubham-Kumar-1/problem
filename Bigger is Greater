@@ -1,0 +1,44 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'biggerIsGreater' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING w as parameter.
+#
+
+def biggerIsGreater(w):
+    # Write your code here
+    w = list(w)
+    right_end = len(w) - 1
+    left, swapped = right_end - 1, False
+    while not swapped and left > -1:
+        right = left + 1
+        if w[left] < w[right]:
+            while right <= right_end and w[left] < w[right]:
+                right += 1
+            w[left], w[right - 1], swapped = w[right - 1], w[left], True
+        left -= 1
+    if not swapped:
+        return 'no answer'
+    return ''.join(w[:left+2] + sorted(w[left+2:]))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    T = int(input().strip())
+
+    for T_itr in range(T):
+        w = input()
+
+        result = biggerIsGreater(w)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
