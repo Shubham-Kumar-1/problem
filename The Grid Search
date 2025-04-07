@@ -1,0 +1,13 @@
+def gridSearch(G, P):
+    # Write your code here
+    for row in range(len(G) - len(P) + 1):
+        for col in range(len(G[0]) - len(P[0]) + 1):
+            if G[row][col:col + len(P[0])] == P[0]:
+                found = True
+                for nrow in range(1, len(P)):
+                    if G[row + nrow][col: col + len(P[0])] != P[nrow]:
+                        found = False
+                        break
+                if found:
+                    return "YES"
+    return "NO"
