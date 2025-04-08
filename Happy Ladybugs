@@ -1,0 +1,17 @@
+def ishappy(b):
+    for bug in range(1, len(b) - 1):
+        if b[bug] == b[bug - 1] or b[bug] == b[bug + 1]:
+            continue
+        else:
+            return False
+    return True
+    
+def happyLadybugs(b):
+    # Write your code here
+    ladybugs = set([string for string in b if string != "_"])
+    if list(b).count("_") < 1 and not ishappy(b):
+        return "NO"
+    for ladybug in ladybugs:
+        if list(b).count(ladybug) < 2:
+            return "NO"
+    return "YES"
