@@ -1,0 +1,5 @@
+def strangeCounter(t):
+    # Write your code here
+    r = math.ceil(math.log2(t/3+1)) # Calculate the number of current round
+    sum_full = 3*(2**r-1) # Calculate the time when value reach to 1 at current round
+    return sum_full - t + 1
