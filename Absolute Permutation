@@ -1,0 +1,13 @@
+def absolutePermutation(n, k):
+    # Write your code here
+    if k == 0: return list(range(1,n+1))
+    if (n/k)%2 != 0: return [-1]
+    res = []
+    up = True
+    for i in range(n//k):
+        for j in range(k):
+            res.append(i*k+1+j + (k if up else -k))
+        up = not up
+        
+        
+    return  res
