@@ -1,0 +1,17 @@
+def superReducedString(s):
+    # Write your code here
+    ans=list(s)
+    cha=1
+    while cha==1:
+        cha=0
+        for i in range(len(ans)-1):
+            if ans[i]==ans[i+1]:
+                ans[i]='0'
+                ans[i+1]='0'
+        prev=ans[:]
+        ans= [num for num in ans if num != '0']
+        if prev!=ans:
+            cha=1
+    if ans ==[]:
+        return 'Empty String'
+    return ''.join(ans)
