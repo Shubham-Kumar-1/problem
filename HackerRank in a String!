@@ -1,0 +1,10 @@
+def hackerrankInString(s):
+    # Write your code here
+    x='hackerrank'
+    for i in range(len(x)):
+        if(x[i] in s):
+            ind=s.index(x[i])
+            s=s[ind+1:]
+        else:
+            return 'NO'
+    return 'YES'
