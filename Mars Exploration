@@ -1,0 +1,4 @@
+def marsExploration(s):
+    # Write your code here
+    correct_signal = 'SOS' * (len(s) // 3)
+    return sum(s[i] != correct_signal[i] for i in range(len(s)))
