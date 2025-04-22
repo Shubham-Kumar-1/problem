@@ -1,0 +1,6 @@
+def gemstones(arr):
+    # Write your code here
+    m=set(arr[0])
+    for i in (arr):
+        m=set(i).intersection(m)
+    return len(m)
