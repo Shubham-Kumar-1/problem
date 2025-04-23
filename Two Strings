@@ -1,0 +1,3 @@
+def twoStrings(s1, s2):
+    # Write your code here
+    return "NO" if len(set(s1).intersection(set(s2))) == 0 else "YES"
