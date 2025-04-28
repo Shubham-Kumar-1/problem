@@ -1,0 +1,14 @@
+def insertionSort1(n, arr):
+    # Write your code here
+    insert = arr[-1]
+    index = list(reversed([i for i in range(len(arr) - 1)]))
+    for i in index:
+        if insert <= arr[i]:
+            arr[i + 1] = arr[i]
+            print(" ".join([str(i) for i in arr]))
+        else:
+            arr[i + 1] = insert
+            print(" ".join([str(i) for i in arr]))
+            return
+    arr[0] = insert
+    print(" ".join([str(i) for i in arr]))
