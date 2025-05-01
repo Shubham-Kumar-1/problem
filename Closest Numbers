@@ -1,0 +1,13 @@
+def closestNumbers(arr):
+    # Write your code here
+    arr = sorted(arr)
+    lowest = float("inf")
+    minimum = []
+    for i in range(len(arr) - 1):
+        if arr[i + 1] - arr[i] < lowest:
+            lowest = arr[i + 1] - arr[i]
+            minimum = [arr[i], arr[i + 1]]
+        elif arr[i + 1] - arr[i] == lowest:
+            minimum.append(arr[i])
+            minimum.append(arr[i + 1])
+    return minimum
