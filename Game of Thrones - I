@@ -1,0 +1,14 @@
+from collections import Counter
+def gameOfThrones(s):
+    # Write your code here
+    l = Counter(s)
+    odd = False
+    
+    for val in l.values():
+        if val % 2 != 0:
+            if odd:
+                return 'NO'
+            else:
+                odd = True
+                
+    return 'YES'
