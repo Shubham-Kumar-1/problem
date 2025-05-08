@@ -1,0 +1,11 @@
+def quickSort(arr):
+    # Write your code here
+    pivot = arr[0]
+    arr.remove(pivot)
+    array = [pivot]
+    for num in arr:
+        if num <= pivot:
+            array.insert(array.index(pivot), num)
+        else:
+            array.append(num)
+    return array
