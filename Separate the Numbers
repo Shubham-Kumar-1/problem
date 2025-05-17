@@ -1,0 +1,15 @@
+def separateNumbers(s):
+    # Write your code here
+    n = len(s)
+    for l in range(1, n // 2 + 1):
+        fir_num = int(s[:l])  
+        cur_num = fir_num
+        ans = str(fir_num)
+        while len(ans) < n:
+            cur_num += 1
+            ans += str(cur_num)
+        
+        if ans == s:
+            print(f"YES {fir_num}")
+            return
+    print("NO")
