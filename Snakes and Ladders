@@ -1,0 +1,34 @@
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        game = []
+
+        N = len(board)
+
+        END = N ** 2 - 1
+
+        for row in range(N - 1, -1, -1):
+            position = N - row
+
+            if position % 2 == 1:
+                game.extend(board[row])
+            else:
+                game.extend(board[row][::-1])
+
+        game = [space - 1 if space != -1 else -1 for space in game]
+
+        s = deque([(0, 0)])
+
+        cache = [float('inf')] * (N * N)
+
+        while s:
+            position, count = s.popleft()
+
+            for to in range(position + 1, min(position + 7, END + 1)):
+                if game[to] != -1:
+                    to = game[to]
+
+                if cache[to] > count + 1:
+                    cache[to] = count + 1
+                    s.append((to, count + 1))
+
+        return cache[-1] if cache[-1] != float('inf') else -1
