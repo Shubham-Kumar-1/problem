@@ -1,0 +1,11 @@
+def missingNumbers(arr, brr):
+    # Write your code here
+    org = Counter(brr)
+    miss = Counter(arr)
+    missing = []
+    
+    for num, count in org.items():
+        if miss[num] < count:
+            missing.append(num)
+            
+    return sorted(missing)
