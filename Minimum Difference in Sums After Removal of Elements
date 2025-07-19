@@ -1,0 +1,27 @@
+class Solution:
+    def minimumDifference(self, nums: List[int]) -> int:
+        n = len(nums) // 3
+        prefix_one = [0] * (n + 1)
+        one = [-num for num in nums[:n]]
+        heapq.heapify(one)
+        prefix_one[0] = -sum(one)
+        for i in range(n, 2*n):
+            if -nums[i] > one[0]:
+                out = -heapq.heappop(one)
+                prefix_one[i - n + 1] = prefix_one[i - n] + nums[i] - out
+                heapq.heappush(one, -nums[i])
+            else:
+                prefix_one[i - n + 1] = prefix_one[i - n]
+        
+        two = nums[2 * n:]
+        heapq.heapify(two)
+        sum_two = sum(two)
+        res = prefix_one[-1] - sum_two
+        for i in range(2 * n - 1, n - 1, -1):
+            if nums[i] > two[0]:
+                out = heapq.heappop(two)
+                sum_two += nums[i] - out
+                heapq.heappush(two, nums[i])
+            res = min(res, prefix_one[i - n] - sum_two)
+        
+        return res
