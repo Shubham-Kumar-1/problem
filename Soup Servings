@@ -1,0 +1,12 @@
+class Solution:
+    def soupServings(self, n: int) -> float:
+        if n > 5000: return 1.0
+        m = (n + 124) // 25
+        p = [[0.0]*(m + 1) for _ in range(m + 1)]
+        for j in range(5):
+            for i in range(j, m): p[j][i] = 1.0
+            p[j][j] = 0.5
+        for a in range(4, m):
+            for b in range(4, m):
+                p[a][b] = 0.25*(p[a-4][b] + p[a-3][b-1] + p[a-2][b-2] + p[a-1][b-3])
+        return p[m-1][m-1]
