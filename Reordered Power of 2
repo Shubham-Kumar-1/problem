@@ -1,0 +1,12 @@
+class Solution:
+    def reorderedPowerOf2(self, n: int) -> bool:
+        n_sorted = sorted(str(n))
+
+        i = 0
+        while (1 << i) <= 10**9:
+            if sorted(str(1 << i)) == n_sorted:
+                return True
+            i += 1
+
+        return False
+
