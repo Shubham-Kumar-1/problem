@@ -1,0 +1,22 @@
+class Solution:
+    def productQueries(self, n, queries):
+        MOD = 10**9 + 7
+
+        # Step 1: Get the powers of 2 that sum up to 'n'
+        powers = []
+        i = 0
+        while n > 0:
+            if n & 1:
+                powers.append(2 ** i)
+            n >>= 1
+            i += 1
+
+        # Step 2: Answer each query by multiplying the values in the range
+        results = []
+        for left, right in queries:
+            product = 1
+            for i in range(left, right + 1):
+                product = (product * powers[i]) % MOD
+            results.append(product)
+
+        return results
